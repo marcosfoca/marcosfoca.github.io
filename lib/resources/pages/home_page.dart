@@ -94,118 +94,180 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget presentationBlock() {
-    return Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: defaultDarkBlue, width: 5), // Border color and width
-                  borderRadius: BorderRadius.circular(20), // Rounded corners
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15), // Match with border radius
-                  child: Image.asset(
-                    "lib/resources/assets/photo_of_me.png",
-                    fit: BoxFit.fitWidth,
-                  ),
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 25,
+      runSpacing: 20,
+      children: [
+        // Image Container
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: SizedBox(
+            width: 500, // Use fixed width to help control responsiveness
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: defaultDarkBlue, width: 5), // Border color and width
+                borderRadius: BorderRadius.circular(20), // Rounded corners
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15), // Match with border radius
+                child: Image.asset(
+                  "lib/resources/assets/photo_of_me.png",
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
           ),
-          Expanded(
-              flex: 3,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 50),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // NAME
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Creative ',
-                            style: TextStyle(
-                              fontFamily: 'Lobster',
-                              fontWeight: FontWeight.w900,
-                              color: defaultRed,
-                              fontSize: 60,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'thinking, ',
-                            style: TextStyle(
-                              color: defaultDarkBlue,
-                              fontSize: 52,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'practical ',
-                            style: TextStyle(
-                              fontFamily: 'BebasNeue',
-                              fontWeight: FontWeight.w900,
-                              color: defaultBlack,
-                              fontSize: 60,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'outcomes.',
-                            style: TextStyle(
-                              color: defaultDarkBlue,
-                              fontSize: 52,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Marcos Fortis: Self-taught Software Developer",
-                      style: TextStyle(
-                        fontFamily: 'BebasNeue',
-                        color: defaultBlack,
-                        fontWeight: FontWeight.w900,
-                        fontSize: 30,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    // DESCRIPCION
-                    Text(
-                      "In life, there are thinkers and executers. I have already been both, since i decided to develop my first app at the age of 18. I learned app development and launched ReMind, my first app, in less than a year, while balancing studies and work. Now, I can assist you with with the creation of apps and websites, recognizing what you feel as a thinker, and knowing what you want me to execute.",
-                      style: TextStyle(
-                        color: defaultBlack,
-                        fontSize: 21,
-                      ),
-                    ),
-                    SizedBox(height: 20,),
-                    TextButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(defaultRed),
-                        foregroundColor: MaterialStateProperty.all<Color>(defaultLightBlue),
-                      ),
-                      onPressed: ()  {
-                        contactButton();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.account_circle, size: 40),
-                            SizedBox(width: 13),
-                            FittedBox(child: Text("contact this guy", style: TextStyle(fontSize: 30, fontFamily: 'BebasNeue'),)),
-                          ],
+        ),
+
+        // Text Column
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: SizedBox(
+            width: 600, // Use fixed width to help control responsiveness
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // NAME
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Creative ',
+                        style: TextStyle(
+                          fontFamily: 'Lobster',
+                          fontWeight: FontWeight.w900,
+                          color: defaultRed,
+                          fontSize: 60,
                         ),
                       ),
-                    ),
-                  ],
+                      TextSpan(
+                        text: 'thinking, ',
+                        style: TextStyle(
+                          color: defaultDarkBlue,
+                          fontSize: 52,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'practical ',
+                        style: TextStyle(
+                          fontFamily: 'BebasNeue',
+                          fontWeight: FontWeight.w900,
+                          color: defaultBlack,
+                          fontSize: 60,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'outcomes.',
+                        style: TextStyle(
+                          color: defaultDarkBlue,
+                          fontSize: 52,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              )
+                SizedBox(height: 20),
+                // Sub-heading
+                Text(
+                  "Marcos Fortis: Self-taught Software Developer",
+                  style: TextStyle(
+                    fontFamily: 'BebasNeue',
+                    color: defaultBlack,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(height: 10),
+                // DESCRIPTION
+                Text(
+                  "In life, there are thinkers and executers. I have already been both, since I decided to develop my first app at the age of 18. I learned app development and launched ReMind, my first app, in less than a year, while balancing studies and work. Now, I can assist you with the creation of apps and websites, recognizing what you feel as a thinker, and knowing what you want me to execute.",
+                  style: TextStyle(
+                    color: defaultBlack,
+                    fontSize: 21,
+                  ),
+                ),
+                SizedBox(height: 20),
+                // Contact Button
+                TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(defaultRed),
+                    foregroundColor: MaterialStateProperty.all<Color>(defaultLightBlue),
+                  ),
+                  onPressed: () {
+                    contactButton();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.account_circle, size: 40),
+                        SizedBox(width: 13),
+                        FittedBox(
+                          child: Text(
+                            "contact this guy",
+                            style: TextStyle(fontSize: 30, fontFamily: 'BebasNeue'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ]
+        ),
+      ],
+    );
+  }
+
+  Widget projectsBlock() {
+    return Container(
+      color: defaultLightBlue,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Some of my ',
+                    style: TextStyle(
+                      fontFamily: 'Lobster',
+                      fontWeight: FontWeight.w900,
+                      color: defaultDarkBlue,
+                      fontSize: 60,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'projects',
+                    style: TextStyle(
+                      fontFamily: 'BebasNeue',
+                      fontWeight: FontWeight.w900,
+                      color: defaultRed,
+                      fontSize: 60,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 50),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Scrollable view with titles and images from appNames and appIconSource
+                appCards(),
+                SizedBox(height: 50),
+                // Widget showing app details
+                appDetails(),
+                SizedBox(height: 50),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -374,53 +436,10 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
           shrinkWrap: true,
           children: [
+            SizedBox(height: 20),
             presentationBlock(),
-            Container(
-              color: defaultLightBlue,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 30.0, top: 30.0),
-                child: Column(
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Some of my ',
-                            style: TextStyle(
-                              fontFamily: 'Lobster',
-                              fontWeight: FontWeight.w900,
-                              color: defaultDarkBlue,
-                              fontSize: 60,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'projects',
-                            style: TextStyle(
-                              fontFamily: 'BebasNeue',
-                              fontWeight: FontWeight.w900,
-                              color: defaultRed,
-                              fontSize: 60,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 50),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        // Scrollable view with titles and images from appNames and appIconSource
-                        appCards(),
-                        SizedBox(height: 50),
-                        // Widget showing app details
-                        appDetails(),
-                        SizedBox(height: 150),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            )
+            SizedBox(height: 50),
+            projectsBlock(),
           ]
       ),
     );

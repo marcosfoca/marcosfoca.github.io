@@ -82,33 +82,28 @@ class _RemindPageState extends State<RemindPage> {
   }
 
   Widget presentationBlock() {
-    return Row(
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 25,
+      runSpacing: 20,
       children: [
-        Expanded(
-          flex: 2,
+        SizedBox(
+          height: 685,
+          width: 500,
           child: Center(
-            child: SizedBox(
-              height: 600,
-              width: 330,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),  // Match with border radius
-                child: Center(
-                  // Display video player
-                  child: _controller.value.isInitialized
-                      ? AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: VideoPlayer(_controller),
-                  )
-                      : const CircularProgressIndicator(color: remindDefaultBlack),  // Show a loader until the video initializes
-                ),
-              ),
-            ),
+            // Display video player
+            child: _controller.value.isInitialized
+                ? AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),
+            )
+                : const CircularProgressIndicator(color: remindDefaultBlack),  // Show a loader until the video initializes
           ),
         ),
-        Expanded(
-          flex: 4,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 50),
+        Padding(
+          padding: const EdgeInsets.only(top: 80.0, right: 20.0, left: 20.0),
+          child: SizedBox(
+            width: 600,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -187,15 +182,16 @@ class _RemindPageState extends State<RemindPage> {
               Icon(
                 icon,
                 color: remindDefaultBlack,
-                size: 60, // Adjust icon size to match text better
+                size: 50, // Adjust icon size to match text better
               ),
               const SizedBox(width: 12), // Add spacing between icon and text
-              FittedBox(
+              SizedBox(
+                width: 450,
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'LTHoop', // Set custom font
-                    fontSize: 56, // Larger font for "track" (title-like)
+                    fontSize: 50, // Larger font for "track" (title-like)
                     color: remindDefaultBlack,
                     fontWeight: FontWeight.bold, // Make it bolder for title look
                   ),
@@ -203,9 +199,9 @@ class _RemindPageState extends State<RemindPage> {
               ),
             ],
           ),
-          SizedBox(height: 8), // Add spacing between title and description
+          const SizedBox(height: 8), // Add spacing between title and description
           SizedBox(
-            width: 500,
+            width: 450,
             child: Text(
               description,
               textAlign: TextAlign.center,
@@ -224,9 +220,9 @@ class _RemindPageState extends State<RemindPage> {
   Widget featuresBlock() {
     return
         Wrap(
-          alignment: WrapAlignment.spaceAround,
-          spacing: 70, // Adds some spacing between the feature cards
-          runSpacing: 60, // Adds vertical spacing between rows
+          alignment: WrapAlignment.center,
+          spacing: 100, // Adds some spacing between the feature cards
+          runSpacing: 120, // Adds vertical spacing between rows
           children: [
             feature(
                 Icons.smart_toy_rounded, // Icon related to AI and automation
@@ -240,7 +236,7 @@ class _RemindPageState extends State<RemindPage> {
             ),
             feature(
                 Icons.fitness_center_rounded, // Icon representing fitness and strength (Progressive Overload)
-                "Adaptive Progression",
+                "Adaptive Progress",
                 "Our system dynamically adjusts your goals based on your progress. Challenge yourself with personalized goals that grow with you."
             ),
             feature(
@@ -251,7 +247,6 @@ class _RemindPageState extends State<RemindPage> {
           ],
         );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -269,12 +264,12 @@ class _RemindPageState extends State<RemindPage> {
           presentationBlock(),
           const SizedBox(height: 170),
           featuresBlock(),
-          const SizedBox(height: 30),
+          const SizedBox(height: 90),
           Padding(
             padding: const EdgeInsets.all(48.0),
             child: mainButton("Check it out"),
           ),
-          const SizedBox(height: 170),
+          const SizedBox(height: 100),
         ],
       ),
     );
